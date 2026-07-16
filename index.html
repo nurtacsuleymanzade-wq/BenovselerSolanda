@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bənövşələr Solanda — Kitab & Film</title>
+    <meta name="description" content="Bənövşələr Solanda — Bir ana hekayəsi. Kitab və film layihəsi.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #faf7f2;
+            --text: #2d2a24;
+            --text-light: #8a8078;
+            --accent: #b8865a;
+            --accent-light: #d4a574;
+            --accent-dark: #8b6b47;
+            --rose: #c4928a;
+            --rose-light: #e8d5d0;
+            --gold: #c9a96e;
+            --cream: #f5efe6;
+            --shadow: rgba(45,42,36,0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ─── NAVBAR ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250,247,242,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139,107,71,0.1);
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            letter-spacing: 0.5px;
+        }
+        .nav-logo span { font-style: italic; font-weight: 400; }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-dark); }
+        .nav-links .nav-cta {
+            background: var(--accent);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .nav-links .nav-cta:hover { background: var(--accent-dark); }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 60px;
+            background: linear-gradient(160deg, #faf7f2 0%, #f5efe6 40%, #e8d5d0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '🌸';
+            position: absolute;
+            font-size: 30rem;
+            opacity: 0.04;
+            top: -10%;
+            right: -5%;
+            transform: rotate(15deg);
+        }
+        .hero::after {
+            content: '🌿';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.03;
+            bottom: -15%;
+            left: -10%;
+            transform: rotate(-20deg);
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content .ornament {
+            font-size: 2rem;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+            letter-spacing: 12px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-weight: 700;
+            color: var(--accent-dark);
+            line-height: 1.15;
+            margin-bottom: 8px;
+        }
+        .hero h1 .italic { font-style: italic; font-weight: 400; }
+        .hero .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.9;
+        }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-dark);
+            border: 1.5px solid var(--accent);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .btn-secondary:hover { background: var(--cream); transform: translateY(-2px); }
+
+        /* ─── KİTAP BÖLÜMÜ ─── */
+        .book-section {
+            padding: 100px 40px;
+            background: white;
+        }
+        .book-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .book-cover {
+            width: 100%;
+            aspect-ratio: 2/3;
+            background: linear-gradient(145deg, var(--rose-light), var(--cream));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 20px 60px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .book-cover::before {
+            content: '🌺';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+        }
+        .book-cover-text {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .book-cover-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent-dark);
+            margin-bottom: 8px;
+        }
+        .book-cover-text p {
+            color: var(--text-light);
+            font-style: italic;
+        }
+        .book-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--accent-dark);
+            margin-bottom: 16px;
+        }
+        .book-info .meta {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .book-info .meta span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .book-info p {
+            color: var(--text-light);
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        /* ─── FİLM BÖLÜMÜ ─── */
+        .film-section {
+            padding: 100px 40px;
+            background: var(--cream);
+        }
+        .film-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .film-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+        }
+        .film-container .subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        .film-poster {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--rose-light), var(--accent-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 20px 60px var(--shadow);
+        }
+        .film-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .film-stat {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .film-stat .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .film-stat .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        /* ─── ANA KARAKTER ─── */
+        .character-section {
+            padding: 100px 40px;
+            background: white;
+        }
+        .character-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .character-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--accent-dark);
+            margin-bottom: 8px;
+        }
+        .character-container .subtitle {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+        .character-card {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        .character-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, var(--rose-light), var(--accent-light));
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .character-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--accent-dark);
+            margin-bottom: 8px;
+        }
+        .character-info .age {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .character-info p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        .character-info .traits {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .character-info .traits span {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ─── İNSTAGRAM ─── */
+        .instagram-section {
+            padding: 80px 40px;
+            background: linear-gradient(145deg, var(--cream), var(--rose-light));
+            text-align: center;
+        }
+        .instagram-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+        }
+        .instagram-section p {
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 60px 40px 30px;
+            background: var(--text);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+        }
+        footer .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        footer .footer-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        footer .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        footer .footer-links a:hover { color: var(--gold); }
+        footer p { font-size: 0.85rem; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            nav { padding: 16px 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 100px 20px 40px; }
+            .hero h1 { font-size: 2.5rem; }
+            .book-section { padding: 60px 20px; }
+            .book-container { grid-template-columns: 1fr; gap: 40px; }
+            .film-section { padding: 60px 20px; }
+            .character-card { flex-direction: column; text-align: center; padding: 24px; }
+            .character-avatar { width: 120px; height: 120px; }
+            .character-info .traits { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav>
+    <div class="nav-logo">Bənövşə<span>lər</span> Solanda</div>
+    <div class="nav-links">
+        <a href="#book">Kitab</a>
+        <a href="#film">Film</a>
+        <a href="#character">Personaj</a>
+        <a href="https://www.instagram.com/benovseler_solanda_kitab_filmi" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/benovseler_solanda_kitab_filmi" target="_blank" class="nav-cta">🎬 İzlə</a>
+    </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="ornament">✿ ✿ ✿</div>
+        <h1>Bənövşələr<br><span class="italic">Solanda</span></h1>
+        <div class="subtitle">Bir ana hekayəsi</div>
+        <p>
+            Hər çiçəyin bir hekayəsi var. Bənövşə — 55 yaşında, örgülü saçlı, 
+            inci boyunbağılı, çiçəkli donlu bir Azərbaycan qadınının 
+            iç dünyasına səyahət.
+        </p>
+        <div class="hero-buttons">
+            <a href="#book" class="btn-primary">📖 Kitabı Kəşf Et</a>
+            <a href="#film" class="btn-secondary">🎥 Filmi Göstər</a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── KİTAP ─── -->
+<section class="book-section" id="book">
+    <div class="book-container">
+        <div class="book-cover">
+            <div class="book-cover-text">
+                <h3>Bənövşələr<br>Solanda</h3>
+                <p>Bir ana hekayəsi</p>
+            </div>
+        </div>
+        <div class="book-info">
+            <h2>📖 Kitab Haqqında</h2>
+            <div class="meta">
+                <span>✍️ Müəllif: Ana</span>
+                <span>📅 İl: 2026</span>
+                <span>🌺 Janr: Dram / Ailə</span>
+            </div>
+            <p>
+                "Bənövşələr Solanda" — bir ömür boyu sevginin, itkisin və yenidən doğuşun 
+                hekayəsidir. Baş qəhrəman Bənövşə, 55 yaşında bir Azərbaycan qadını olaraq, 
+                həyatının mərhələlərində yaşadığı çətinliklər, sevinclər və iç mübarizələr 
+                vasitəsilə oxucunu düşündürür.
+            </p>
+            <p>
+                Roman, eyni adlı film layihəsinin əsasını təşkil edir. Hər bir fəsil, 
+                Bənövşənin həyatındakı bir dövrü — gənclik illərindən yetkinlik çağına, 
+                sevgidən itkiyə, ümiddən yenidən doğuşa qədər olan yolu işıqlandırır.
+            </p>
+            <a href="https://www.instagram.com/benovseler_solanda_kitab_filmi" target="_blank" class="btn-primary" style="margin-top: 8px;">
+                📚 Daha Çox Oxu
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FİLM ─── -->
+<section class="film-section" id="film">
+    <div class="film-container">
+        <h2>🎬 Film Layihəsi</h2>
+        <p class="subtitle">Eyni adlı kitabdan ekranlaşdırılır</p>
+        
+        <div class="film-poster">🎥</div>
+        
+        <div class="film-details">
+            <div class="film-stat">
+                <div class="number">90 dəq</div>
+                <div class="label">Filmin uzunluğu</div>
+            </div>
+            <div class="film-stat">
+                <div class="number">2026</div>
+                <div class="label">İstehsal ili</div>
+            </div>
+            <div class="film-stat">
+                <div class="number">Azərbaycan</div>
+                <div class="label">Ölkə</div>
+            </div>
+            <div class="film-stat">
+                <div class="number">🌺</div>
+                <div class="label">Dram / Ailə</div>
+            </div>
+        </div>
+        
+        <p style="color: var(--text-light); line-height: 1.9; margin-bottom: 32px;">
+            Kitabın vizual dünyasını ekrana daşıyan film layihəsi, Bənövşə obrazının 
+            iç dünyasını, onun yaşadığı mühiti və həyat yolunu kinematoqrafik dillə 
+            ifadə edir. Çəkilişlər və post-prodakşn davam edir.
+        </p>
+        
+        <a href="https://www.instagram.com/benovseler_solanda_kitab_filmi" target="_blank" class="btn-primary">
+            🎬 Yenilikləri İzlə
+        </a>
+    </div>
+</section>
+
+<!-- ─── KARAKTER ─── -->
+<section class="character-section" id="character">
+    <div class="character-container">
+        <h2>🌺 Baş Personaj</h2>
+        <p class="subtitle">Bənövşə — hekayənin ürəyi</p>
+        
+        <div class="character-card">
+            <div class="character-avatar">🌷</div>
+            <div class="character-info">
+                <h3>Bənövşə</h3>
+                <div class="age">55 yaş • Azərbaycan qadını</div>
+                <p>
+                    Örgülü saçları, inci boyunbağı və çiçəkli donu ilə 
+                    Bənövşə — həm keçmişin izini, həm də gələcəyə ümidini 
+                    eyni anda daşıyan bir qadındır. Onun hekayəsi hər bir 
+                    qadının içində gizlənən gücü, sevgini və dözümü simvollaşdırır.
+                </p>
+                <div class="traits">
+                    <span>💪 Güclü</span>
+                    <span>❤️ Sevgi dolu</span>
+                    <span>🌿 Ana</span>
+                    <span>📿 Ənənəvi</span>
+                    <span>✨ Müasir</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── İNSTAGRAM ─── -->
+<section class="instagram-section">
+    <h2>📱 Sosial Media</h2>
+    <p>Layihə ilə bağlı bütün yenilikləri Instagram səhifəmizdə izləyin</p>
+    <a href="https://www.instagram.com/benovseler_solanda_kitab_filmi" target="_blank" class="btn-primary">
+        📸 Instagram'da İzlə
+    </a>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+    <div class="footer-logo">Bənövşələr Solanda</div>
+    <div class="footer-links">
+        <a href="#book">Kitab</a>
+        <a href="#film">Film</a>
+        <a href="#character">Personaj</a>
+        <a href="https://www.instagram.com/benovseler_solanda_kitab_filmi" target="_blank">Instagram</a>
+    </div>
+    <p>© 2026 Bənövşələr Solanda. Bütün hüquqlar qorunur.</p>
+    <p style="margin-top: 6px; font-size: 0.8rem; opacity: 0.6;">Bir ana əsəri 🌸</p>
+</footer>
+
+</body>
+</html>
